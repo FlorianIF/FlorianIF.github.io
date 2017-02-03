@@ -87,6 +87,24 @@ nu<!DOCTYPE html>
     </header>
 
     <!-- Contact Section -->
+    $("input[name=btnK]").click(function(event){
+                  event.preventDefault();
+                  $.getJSON('bitcoin.json', function(data) {
+                      console.log("hello world");
+                      var items = [];
+ 
+                      $.each(data.result, function(key, val) {
+                          console.log(val);
+                        val.html= ('<li id="' + key + '">' + val + '</li>');
+                      });
+ 
+                      $('<ul/>', {
+                        'class': 'my-new-list',
+                        html: items.join('')
+                      }).appendTo('body');
+                    });
+            });
+
     <section id="contact" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
